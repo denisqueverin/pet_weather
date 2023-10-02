@@ -19,8 +19,15 @@ import { LoadTempCity, LoadWeekTemp } from '../../redux/actions'
 
 import styles from './styles/index.module.css'
 
-// eslint-disable-next-line no-unused-expressions
-'use strict';
+const CityInfo = function (name: string, temp: number) {
+  this.name = name;
+  this.temp = temp;
+}
+
+CityInfo.prototype.sayNameCity = function sayNameCity() {
+  console.log(`Название города ${this.name}`);
+  console.log(`Средняя температура ${this.temp}`);
+}
 
 type Props = {}
 
@@ -225,6 +232,12 @@ export const City: React.FC<Props> = () => {
     )
   }
 
+  const handleProrotype = (city: string, temp: number) => {
+    const cityName = () => new CityInfo(city, temp);
+
+    cityName().sayNameCity();
+  }
+
   return (
     <div>
       <div
@@ -234,7 +247,10 @@ export const City: React.FC<Props> = () => {
         { buttonBack() }
       </div>
       <div className={ styles.wrapper_weathers }>
-        <h1 className={ styles.lable_sity }>
+        <h1
+          className={ styles.lable_sity }
+          onClick={ () => handleProrotype(params?.city, weatherDay?.temp) }
+        >
           { params?.city.charAt(0).toUpperCase() }
           { params?.city.slice(1).toLowerCase() }
         </h1>

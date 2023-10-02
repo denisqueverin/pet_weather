@@ -29,6 +29,7 @@
   /* height: 400px; */
   display: flex;
   justify-content: center;
+  align-items: center;
 
 }
 
@@ -85,8 +86,8 @@
   margin-left: 2vh;
   margin-top: 8px;
   opacity: 0.6;
-  width: 8vh;
-  height: 4vh;
+  width: 16vh;
+  height: 8vh;
   text-align: center;
   display: block;
   font-family: inherit;
@@ -148,4 +149,9 @@
 
 .link_none {
   text-decoration: none;
+}
+
+.wrapper_buttons {
+  display: flex;
+  align-items: center;
 }

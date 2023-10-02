@@ -118,6 +118,23 @@ const Home: React.FC = () => {
       : null
   );
 
+  const buttonQuestions = () => {
+    console.log();
+
+    return (
+      <button
+        onClick={ e => {
+          e.stopPropagation();
+          e.preventDefault()
+
+          alert('Чтобы воспользоваться поиском нажмите на кнопку Search')
+        } }
+      >
+        ?
+      </button>
+    )
+  }
+
   const renderValues = () => (
     value.length > 3 ? (
     // @ts-ignore
@@ -127,6 +144,7 @@ const Home: React.FC = () => {
       >
         <button className={ styles.btn_entry_sity }>
           { LABELS.SEARCH }
+          {/* { buttonQuestions() } Всплытие */}
         </button>
       </Link>
     ) : (
@@ -135,6 +153,7 @@ const Home: React.FC = () => {
         className={ styles.btn_entry_sity }
       >
         { LABELS.SEARCH }
+        {/* { buttonQuestions() } */}
       </button>
     )
   );
@@ -159,11 +178,15 @@ const Home: React.FC = () => {
           </ul>
           { renderError(isErorImp) }
         </div>
-        { renderValues() }
-        <button
-          onClick={ () => getGeoCityName() }
-          className={ styles.btn_geoposition }
-        />
+        <div
+          className={ styles.wrapper_buttons }
+        >
+          { renderValues() }
+          <button
+            onClick={ () => getGeoCityName() }
+            className={ styles.btn_geoposition }
+          />
+        </div>
       </div>
     </div>
   )
